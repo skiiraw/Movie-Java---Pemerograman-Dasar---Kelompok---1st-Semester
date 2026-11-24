@@ -25,12 +25,11 @@ public class Main {
 
         String[] jamTayang = {"10:00", "13:00", "16:00", "19:00"};
         double[] hargaTayang = {35000, 45000, 45000, 50000};
-        // Status kursi disimpan selama program masih dijalankan.
         boolean[][][] kursiTerisi = new boolean[daftarStudio.length][jamTayang.length][10];
         int nomorTiket = 1;
 
         while (true) {
-            System.out.println("\n========== BIOSKOP KIRA ==========");
+            System.out.println("\n========== BIOSKOP UB==========");
             System.out.println("1. Pesan Tiket");
             System.out.println("2. Lihat Daftar Studio");
             System.out.println("0. Keluar");
@@ -135,7 +134,6 @@ public class Main {
                 int angka = Integer.parseInt(teks);
                 if (angka >= minimum && angka <= maksimum) return angka;
             } catch (NumberFormatException e) {
-                // Input bukan angka; tampilkan pesan di bawah.
             }
             System.out.println("Masukkan angka " + minimum + " sampai " + maksimum + ".");
         }
