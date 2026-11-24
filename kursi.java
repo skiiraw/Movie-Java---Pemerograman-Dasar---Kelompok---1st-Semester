@@ -2,7 +2,7 @@
 public class kursi {
     private String nomorKursi;
     private String baris;
-    private boolean statusKursi; // true = tersedia, false = terisi
+    private boolean statusKursi; 
 
     public kursi(String nomorKursi, String baris, boolean statusKursi) {
         this.nomorKursi = nomorKursi;
