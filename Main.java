@@ -35,7 +35,7 @@ public class Main {
             System.out.println("0. Keluar");
             int menu = bacaAngka("Pilih menu: ", 0, 2);
             if (menu == 0) {
-                System.out.println("Terima kasih sudah menggunakan Bioskop Kira!");
+                System.out.println("Terima kasih sudah menggunakan Bioskop UB!");
                 break;
             }
             if (menu == 2) {
