@@ -1,4 +1,4 @@
-BIOSKOP KIRA - PROGRAM JAVA CONSOLE
+BIOSKOP UB - PROGRAM JAVA CONSOLE
 
 Pastikan JDK terpasang.
 Buka terminal di folder ini dan jalankan:
