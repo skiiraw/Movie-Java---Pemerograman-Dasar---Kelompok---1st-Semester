@@ -1,49 +1,39 @@
+package BioskopJava;
 
-public class kursi {
+public class Kursi {
     private String nomorKursi;
     private String baris;
-    private boolean statusKursi; 
+    private boolean tersedia;
 
-    public kursi(String nomorKursi, String baris, boolean statusKursi) {
+    public Kursi(String nomorKursi, String baris, boolean tersedia) {
         this.nomorKursi = nomorKursi;
         this.baris = baris;
-        this.statusKursi = statusKursi;
+        this.tersedia = tersedia;
     }
 
     public String getNomorKursi() {
         return nomorKursi;
     }
 
-    public void setNomorKursi(String nomorKursi) {
-        this.nomorKursi = nomorKursi;
-    }
-
     public String getBaris() {
         return baris;
     }
 
-    public void setBaris(String baris) {
-        this.baris = baris;
+    public boolean isTersedia() {
+        return tersedia;
     }
 
-    public boolean isStatusKursi() {
-        return statusKursi;
+    public void setTersedia(boolean tersedia) {
+        this.tersedia = tersedia;
     }
 
-    public void setStatusKursi(boolean statusKursi) {
-        this.statusKursi = statusKursi;
-    }
-
-    public boolean cekKetersediaan() {
-        return statusKursi;
-    }
-
-    public void pilihKursi() {
-        if (statusKursi) {
-            statusKursi = false;
+    public boolean pilihKursi() {
+        if (tersedia) {
+            tersedia = false;
             System.out.println("Kursi " + nomorKursi + " (Baris " + baris + ") berhasil dipilih.");
-        } else {
-            System.out.println("Kursi " + nomorKursi + " (Baris " + baris + ") sudah terisi.");
+            return true;
         }
+        System.out.println("Kursi " + nomorKursi + " (Baris " + baris + ") sudah terisi.");
+        return false;
     }
 }
