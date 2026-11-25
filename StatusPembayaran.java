@@ -1,33 +1,33 @@
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.util.Locale;
+package BioskopJava;
 
 public class StatusPembayaran {
     private String statusBayar;
-    private LocalDateTime waktuPembayaran;
+    private String waktuPembayaran;
 
     public StatusPembayaran() {
-        statusBayar = "Belum Dibayar";
+        this.statusBayar = "Belum Dibayar";
+        this.waktuPembayaran = "-";
     }
 
     public String getStatusBayar() {
         return statusBayar;
     }
 
-    public void konfirmasiBayar() {
-        statusBayar = "Lunas";
-        waktuPembayaran = LocalDateTime.now(ZoneId.of("Asia/Jakarta"));
+    public boolean isLunas() {
+        return statusBayar.equalsIgnoreCase("Lunas");
+    }
+
+    public void konfirmasiBayar(String tanggal, String jam) {
+        this.statusBayar = "Lunas";
+        this.waktuPembayaran = tanggal + " / " + jam + " WIB";
     }
 
     public void tampilkanStatus() {
         System.out.println("Status Pembayaran : " + statusBayar);
-        if (waktuPembayaran != null) {
-            Locale indonesia = Locale.forLanguageTag("id-ID");
-            DateTimeFormatter format = DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy HH:mm:ss", indonesia);
-            System.out.println("Hari / Tanggal    : " + waktuPembayaran.format(format));
+        if (isLunas()) {
+            System.out.println("Waktu Konfirmasi  : " + waktuPembayaran);
         } else {
-            System.out.println("Hari / Tanggal    : Belum ada pembayaran");
+            System.out.println("Waktu Konfirmasi  : Belum ada pembayaran");
         }
     }
 }
