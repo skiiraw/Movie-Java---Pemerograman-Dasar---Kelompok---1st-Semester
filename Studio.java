@@ -1,35 +1,36 @@
+package BioskopJava;
 
 public class Studio {
-    private int IdStudio;
-    private String nameStudio;
+    private int idStudio;
+    private String namaStudio;
     private int kapasitasStudio;
 
-    public Studio(int IdStudio, String nameStudio, int kapasitasStudio) {
-        this.IdStudio = IdStudio;
-        this.nameStudio = nameStudio;
-        this.kapasitasStudio = kapasitasStudio;
+    public Studio(int idStudio, String namaStudio, int kapasitasStudio) {
+        this.idStudio = (idStudio > 0) ? idStudio : 1;
+        this.namaStudio = (namaStudio != null && !namaStudio.isBlank()) ? namaStudio : "Studio";
+        this.kapasitasStudio = (kapasitasStudio > 0) ? kapasitasStudio : 10;
     }
 
-    public void showStudio() {
-        System.out.println("ID Studio: " + IdStudio);
-        System.out.println("Nama Studio: " + nameStudio);
-        System.out.println("Kapasitas: " + kapasitasStudio + " Kursi");
-        System.out.println();
+    public int getIdStudio() {
+        return idStudio;
     }
 
-    public void cekKapasitas(int jumlahPenonton) {
-        if (jumlahPenonton <= kapasitasStudio && jumlahPenonton > 0) {
-            System.out.println("Kapasitas studio masih mencukupi");
-        } else {
-            System.out.println("Kapasitas studio tidak mencukupi");
-        }
-    }
-
-    public String getNameStudio() {
-        return nameStudio;
+    public String getNamaStudio() {
+        return namaStudio;
     }
 
     public int getKapasitasStudio() {
         return kapasitasStudio;
+    }
+
+    public boolean isKapasitasCukup(int jumlahPenonton) {
+        return jumlahPenonton > 0 && jumlahPenonton <= kapasitasStudio;
+    }
+
+    public void showStudio() {
+        System.out.println("ID Studio   : " + idStudio);
+        System.out.println("Nama Studio : " + namaStudio);
+        System.out.println("Kapasitas   : " + kapasitasStudio + " Kursi");
+        System.out.println();
     }
 }
