@@ -1,10 +1,13 @@
+package BioskopJava;
+
 public class Pembayaran {
     private String metodePembayaran;
     private double totalBayar;
 
     public Pembayaran(String metodePembayaran, double totalBayar) {
-        this.metodePembayaran = metodePembayaran;
-        this.totalBayar = totalBayar;
+        this.metodePembayaran = (metodePembayaran != null && !metodePembayaran.isBlank())
+                ? metodePembayaran : "Tunai";
+        this.totalBayar = (totalBayar >= 0) ? totalBayar : 0;
     }
 
     public String getMetodePembayaran() {
