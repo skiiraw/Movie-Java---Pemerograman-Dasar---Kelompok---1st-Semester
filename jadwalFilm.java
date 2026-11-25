@@ -1,61 +1,69 @@
-public class jadwalFilm {
-    
+package BioskopJava;
+
+public class JadwalFilm {
     private String idJadwal;
     private String tanggal;
     private String jamMulai;
     private double harga;
 
-    public jadwalFilm(){
+    public JadwalFilm() {
+        this("JD0", "-", "00:00", 0);
     }
-    public jadwalFilm(String idJadwal, String tanggal, String jamMulai, double harga){
+
+    public JadwalFilm(String idJadwal, String tanggal, String jamMulai, double harga) {
         this.idJadwal = idJadwal;
         this.tanggal = tanggal;
         this.jamMulai = jamMulai;
-        this.harga = harga;
+        setHarga(harga);
     }
-    
-    public String getIdJadwal(){
+
+    public String getIdJadwal() {
         return idJadwal;
     }
-    public void setIdJadwal(String idJadwal){
-        this.idJadwal = idJadwal;
-    }
-    public String getTanggal(){
+
+    public String getTanggal() {
         return tanggal;
     }
-    public void setTanggal(String tanggal){
-        this.tanggal = tanggal; 
+
+    public void setTanggal(String tanggal) {
+        if (tanggal != null && !tanggal.isBlank()) {
+            this.tanggal = tanggal;
+        }
     }
-    public String getJamMulai(){
+
+    public String getJamMulai() {
         return jamMulai;
     }
-    public void setJamMulai(String jamMulai){
-        this.jamMulai = jamMulai;
+
+    public void setJamMulai(String jamMulai) {
+        if (jamMulai != null && !jamMulai.isBlank()) {
+            this.jamMulai = jamMulai;
+        }
     }
-    public double getHarga(){
+
+    public double getHarga() {
         return harga;
     }
-    public void setHarga(double harga){
-        if(harga < 0){
-            System.out.println("Harga tidak boleh negatif");
-            return;
+
+    public void setHarga(double harga) {
+        if (harga >= 0) {
+            this.harga = harga;
+        } else {
+            System.out.println("Harga tidak boleh negatif.");
         }
-        this.harga = harga;
     }
-    public void tampilkanJadwal(){
-        System.out.println("ID Jadwal    : " + this.idJadwal);
-        System.out.println("Tanggal      : " + this.tanggal);
-        System.out.println("Jam Mulai    : " + this.jamMulai + " WIB");
-        System.out.printf("Harga Tiket  : Rp %,.0f%n", this.harga);
+
+    public boolean cekJadwal(String tanggalCari, String jamCari) {
+        return tanggalCari != null && jamCari != null
+                && tanggalCari.equalsIgnoreCase(this.tanggal)
+                && jamCari.equalsIgnoreCase(this.jamMulai);
+    }
+
+    public void tampilkanJadwal() {
+        System.out.println("ID Jadwal    : " + idJadwal);
+        System.out.println("Tanggal      : " + tanggal);
+        System.out.println("Jam Mulai    : " + jamMulai + " WIB");
+        System.out.printf("Harga Tiket  : Rp %,.0f%n", harga);
         System.out.println("----------------------------------------");
-    }
-    public boolean cekJadwal(String tanggalCari, String jamCari){
-        boolean cocok = tanggalCari.equalsIgnoreCase(this.tanggal)
-            && jamCari.equalsIgnoreCase(this.jamMulai);
-            if (cocok) {
-            System.out.println("[BERHASIL] Jadwal DITEMUKAN untuk " + tanggalCari + " pukul " + jamCari + " WIB!");
-            System.out.println("ID Jadwal: " + this.idJadwal);
-        }
-        return cocok;
     }
 }
